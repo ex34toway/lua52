@@ -20,33 +20,33 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{A9CF676C-6104-4D26-A849-87AAC9B947BC}</ProjectGuid>
+    <ProjectGuid>{BB0EF8FA-99D0-4BB5-B8CB-AA6789CF28F3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>liblua</RootNamespace>
+    <RootNamespace>luatest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -71,19 +71,15 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -91,14 +87,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LUA_COMPAT_ALL;LUA_BUILD_AS_DLL;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LUA_COMPAT_ALL;LUA_BUILD_AS_DLL;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>../liblua</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -106,13 +101,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;LIBLUA_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,15 +116,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;LIBLUA_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,77 +133,27 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;LIBLUA_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="lapi.h" />
-    <ClInclude Include="lauxlib.h" />
-    <ClInclude Include="lcode.h" />
-    <ClInclude Include="lctype.h" />
-    <ClInclude Include="ldebug.h" />
-    <ClInclude Include="ldo.h" />
-    <ClInclude Include="lfunc.h" />
-    <ClInclude Include="lgc.h" />
-    <ClInclude Include="llex.h" />
-    <ClInclude Include="llimits.h" />
-    <ClInclude Include="lmem.h" />
-    <ClInclude Include="lobject.h" />
-    <ClInclude Include="lopcodes.h" />
-    <ClInclude Include="lparser.h" />
-    <ClInclude Include="lstate.h" />
-    <ClInclude Include="lstring.h" />
-    <ClInclude Include="ltable.h" />
-    <ClInclude Include="ltm.h" />
-    <ClInclude Include="lua.h" />
-    <ClInclude Include="lua.hpp" />
-    <ClInclude Include="luaconf.h" />
-    <ClInclude Include="lualib.h" />
-    <ClInclude Include="lundump.h" />
-    <ClInclude Include="lvm.h" />
-    <ClInclude Include="lzio.h" />
+    <ProjectReference Include="..\liblua\liblua.vcxproj">
+      <Project>{a9cf676c-6104-4d26-a849-87aac9b947bc}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lapi.c" />
-    <ClCompile Include="lauxlib.c" />
-    <ClCompile Include="lbaselib.c" />
-    <ClCompile Include="lbitlib.c" />
-    <ClCompile Include="lcode.c" />
-    <ClCompile Include="lcorolib.c" />
-    <ClCompile Include="lctype.c" />
-    <ClCompile Include="ldblib.c" />
-    <ClCompile Include="ldebug.c" />
-    <ClCompile Include="ldo.c" />
-    <ClCompile Include="ldump.c" />
-    <ClCompile Include="lfunc.c" />
-    <ClCompile Include="lgc.c" />
-    <ClCompile Include="linit.c" />
-    <ClCompile Include="liolib.c" />
-    <ClCompile Include="llex.c" />
-    <ClCompile Include="lmathlib.c" />
-    <ClCompile Include="lmem.c" />
-    <ClCompile Include="loadlib.c" />
-    <ClCompile Include="lobject.c" />
-    <ClCompile Include="lopcodes.c" />
-    <ClCompile Include="loslib.c" />
-    <ClCompile Include="lparser.c" />
-    <ClCompile Include="lstate.c" />
-    <ClCompile Include="lstring.c" />
-    <ClCompile Include="lstrlib.c" />
-    <ClCompile Include="ltable.c" />
-    <ClCompile Include="ltablib.c" />
-    <ClCompile Include="ltm.c" />
-    <ClCompile Include="lundump.c" />
-    <ClCompile Include="lvm.c" />
-    <ClCompile Include="lzio.c" />
+    <ClCompile Include="iterate_table.c" />
+    <ClCompile Include="main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="iterate_table.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
